@@ -1,0 +1,235 @@
+<style>
+  #main-content.article {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: {{settings.brand_color_purewhite}};
+    padding:2rem;
+    border-radius: 22px;
+  }
+  
+  html .article-body p {
+  		box-sizing: border-box;
+      text-align: left;
+      color: #222;
+      line-height: 1.5;
+      font-size: 16px;
+
+      margin-top: 0;
+      margin-bottom: 1rem;
+      font-weight: 400;
+      cursor: default;
+
+box-sizing: border-box;
+text-align: start;
+color: #212529 !important;
+margin-top: 0;
+font-weight: 400 !important;
+font-family: Poppins, sans-serif !important;
+line-height: 32px !important;
+margin-bottom: 8px;
+
+
+  
+  
+  }
+  
+  .article-category-subtitle {
+  list-style: none;
+box-sizing: border-box;
+font-family: "open sans", -apple-system, BlinkMacSystemFont, "segoe ui", Roboto, "helvetica neue", Arial, sans-serif, "apple color emoji", "segoe ui emoji", "segoe ui symbol";
+font-size: 16px;
+font-weight: 400;
+line-height: 1.5;
+text-align: left;
+color: #888;
+cursor: default;
+
+
+  }
+  
+  .article-subtitle {
+    list-style: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: "open sans", -apple-system, BlinkMacSystemFont, "segoe ui", Roboto, "helvetica neue", Arial, sans-serif, "apple color emoji", "segoe ui emoji", "segoe ui symbol";
+    font-size: 16px;
+    line-height: 1.5;
+    text-align: left;
+    color: #1b1c1d;
+    font-weight: 700;
+    cursor: default;
+  }
+  
+  body, html p {
+  background-color: white !Important; 
+  }
+
+    .sidenav-item:hover{
+    text-decoration: underline;
+    color:{{settings.brand_color}};
+
+  }
+
+  .article-title{
+    color:{{settings.brand_color}};
+    font-size: 48px;
+  }
+
+</style>
+
+
+
+<!-- Main Content Area -->
+<div class="flex flex-col-reverse md:flex-row container mx-auto py-5 px-6">
+
+  <!-- Sidebar Navigation -->
+  <div class="w-full md:w-1/4 bg-white p-4">
+    <!-- Navigation Links -->
+    <h3 class="mb-4 article-subtitle text-base">Articles in this section</h3>
+    <nav class="flex flex-col space-y-1">
+       {{#each section.articles}}
+            <a href="{{url}}" class="text-xs pt-4 text-gray-800 hover:text-blue-500 {{#is id ../article.id}}font-semibold	{{/is}}">{{title}}</a>
+        {{/each}}
+    </nav>
+  </div>
+
+  <!-- Main Content -->
+  <div class="w-full md:w-3/4 p-4">
+    <p class="mb-0 article-category-subtitle text-base">{{section.name}}</p>
+    <h1 class="text-2xl font-bold mb-4 text-left text-black">{{article.title}}</h1>
+    <p class="mb-4">
+       <header class="article-header flex flex-row mb-4">
+     
+        <div class="article-author">
+          {{#if settings.show_article_author}}
+            <div class="avatar article-avatar">
+              {{#if article.author.agent}}
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="icon-agent" aria-label="{{t 'team_member' name=article.author.name}}">
+                  <path fill="currentColor" d="M6 0C2.7 0 0 2.7 0 6s2.7 6 6 6 6-2.7 6-6-2.7-6-6-6zm0 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm2.3 7H3.7c-.3 0-.4-.3-.3-.5C3.9 7.6 4.9 7 6 7s2.1.6 2.6 1.5c.1.2 0 .5-.3.5z"/>
+                </svg>
+              {{/if}}
+              <img src="{{article.author.avatar_url}}" alt="" class="user-avatar"/>
+            </div>
+          {{/if}}
+          <div class="article-meta">
+            {{#if settings.show_article_author}}
+              {{#link 'user_profile' id=article.author.id}}
+                {{article.author.name}}
+              {{/link}}
+            {{/if}}
+
+            <div class="meta-group">
+              {{#is article.created_at article.edited_at}}
+                <span class="meta-data">{{date article.created_at timeago=true}}</span>
+              {{else}}
+                <span class="meta-data">{{date article.edited_at timeago=true}}</span>
+                <span class="meta-data">{{t 'updated'}}</span>
+              {{/is}}
+            </div>
+          </div>
+        </div>
+
+        {{#if settings.show_follow_article}}
+          <div class="article-subscribe">{{subscribe}}</div>
+        {{/if}}
+      </header>
+    <div class="article-body">
+      {{article.body}}
+    </div>
+    {{#if settings.show_article_sharing}}
+            <div class="article-share my-4">{{share}}</div>
+          {{/if}}
+    
+       {{#with article}}
+          <div class="article-votes">
+            <span class="article-votes-question" id="article-votes-label">{{t 'was_this_article_helpful'}}</span>
+            <div class="article-votes-controls" role="group" aria-labelledby="article-votes-label">
+              {{vote 'up' class='button article-vote article-vote-up' selected_class="button-primary"}}
+              {{vote 'down' class='button article-vote article-vote-down' selected_class="button-primary"}}
+            </div>
+            <small class="article-votes-count">
+              {{vote 'label' class='article-vote-label'}}
+            </small>
+          </div>
+        {{/with}}
+    </p>
+  
+    {{#if (compare article.content_tags.length ">" 0)}}
+    <article id="main-content" class="article">
+     
+
+      <section class="article-info">
+        <div class="article-content">
+          
+            <section class="content-tags">
+              <h3 class="font-semibold">{{t 'content_tags_label'}}</h3>
+              <ul class="content-tag-list">
+                {{#each article.content_tags}}
+                  <li class="content-tag-item" data-content-tag-id="{{id}}">
+                    {{#link "search_result" content_tag_id=id}}
+                      {{name}}
+                    {{/link}}
+                  </li>
+                {{/each}}
+              </ul>
+            </section>
+
+          {{#if attachments}}
+            <div class="article-attachments">
+              <ul class="attachments">
+                {{#each attachments}}
+                  <li class="attachment-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 16 16" class="attachment-icon">
+                      <path fill="none" stroke="currentColor" stroke-linecap="round" d="M9.5 4v7.7c0 .8-.7 1.5-1.5 1.5s-1.5-.7-1.5-1.5V3C6.5 1.6 7.6.5 9 .5s2.5 1.1 2.5 2.5v9c0 1.9-1.6 3.5-3.5 3.5S4.5 13.9 4.5 12V4"/>
+                    </svg>
+                    <a href="{{url}}" target="_blank">{{name}}</a>
+                    <div class="attachment-meta meta-group">
+                      <span class="attachment-meta-item meta-data">{{size}}</span>
+                      <a href="{{url}}" target="_blank" class="attachment-meta-item meta-data">{{t 'download'}}</a>
+                    </div>
+                  </li>
+                {{/each}}
+              </ul>
+            </div>
+          {{/if}}
+        </div>
+      </section>
+
+      <footer>
+        <div class="article-footer">
+          
+          {{#if settings.show_article_comments}}
+            {{#if comments}}
+              <a href="#article-comments" class="article-comment-count">
+                <svg role="img" aria-labelledby="article-comments-title article-comments-desc" xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="article-comment-count-icon">
+                  <title id="article-comments-title">{{t 'go_to_comments'}}</title>
+                  <desc id="article-comments-desc">{{t 'comments_count' count=article.comment_count}}</desc>
+                  <path fill="none" stroke="currentColor" d="M1 .5h10c.3 0 .5.2.5.5v7c0 .3-.2.5-.5.5H6l-2.6 2.6c-.3.3-.9.1-.9-.4V8.5H1C.7 8.5.5 8.3.5 8V1C.5.7.7.5 1 .5z"/>
+                </svg>
+                <span aria-hidden="true">{{article.comment_count}}</span>
+              </a>
+            {{/if}}
+          {{/if}}
+        </div>
+     
+
+        <div class="article-more-questions">
+          {{request_callout}}
+        </div>
+        <div class="article-return-to-top">
+          <a href="#article-container">
+            {{t 'return_to_top'}}
+            <svg xmlns="http://www.w3.org/2000/svg" class="article-return-to-top-icon" width="20" height="20" focusable="false" viewBox="0 0 12 12" aria-hidden="true">
+              <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5"/>
+            </svg>
+          </a>
+        </div>
+      </footer>
+          {{/if}}
+  </div>
+
+</div>
+
+
+  
+    

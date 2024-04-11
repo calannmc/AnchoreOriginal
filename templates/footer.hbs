@@ -1,0 +1,94 @@
+<footer class="bg-gray-900" aria-labelledby="footer-heading">
+  <h2 id="footer-heading" class="sr-only">Footer</h2>
+  <div class="mx-auto max-w-7xl px-6 py-16 sm:py-12 lg:px-8">
+    <div class="xl:grid xl:grid-cols-3 xl:gap-8">
+      <img class="h-7 mx-auto" src="{{settings.logo}}" alt="{{help_center.name}}">
+      <div class="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
+        <div class="md:grid md:grid-cols-2 md:gap-8">
+          
+          <div>
+           
+            <h3 class="text-sm text-center md:text-left font-semibold leading-6 text-white">Loren Ipsum</h3>
+            <ul role="list" class="mt-6 space-y-4">
+              <li class="text-center md:text-left">
+                <a href="#" class="text-sm leading-6 text-gray-300 hover:text-white">Loren Ipsum</a>
+              </li>
+              <li class="text-center md:text-left">
+                <a href="#" class="text-sm leading-6 text-gray-300 hover:text-white">Loren Ipsum</a>
+              </li>
+              <li class="text-center md:text-left">
+                <a href="#" class="text-sm leading-6 text-gray-300 hover:text-white">Loren Ipsum</a>
+              </li> 
+              <li class="text-center md:text-left">
+                <a href="#" class="text-sm leading-6 text-gray-300 hover:text-white">Loren Ipsum</a>
+              </li>
+            </ul>
+          </div>
+          <div class="mt-10 md:mt-0">
+            <h3 class="text-sm text-center md:text-left font-semibold leading-6 text-white">Loren Ipsum</h3>
+            <ul role="list" class="mt-6 space-y-4">
+              <li class="text-center md:text-left">
+                <a href="#" class="text-sm leading-6 text-gray-300 hover:text-white">Loren Ipsum</a>
+              </li>
+              <li class="text-center md:text-left">
+                <a href="#" class="text-sm leading-6 text-gray-300 hover:text-white">Loren Ipsum</a>
+              </li>
+              <li class="text-center md:text-left">
+                <a href="#" class="text-sm leading-6 text-gray-300 hover:text-white">Loren Ipsum</a>
+              </li>
+              <li class="text-center md:text-left">
+                <a href="#" class="text-sm leading-6 text-gray-300 hover:text-white">Loren Ipsum</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="md:grid md:grid-cols-2 md:gap-8">
+          <div>
+            <h3 class="text-sm text-center md:text-left font-semibold leading-6 text-white">Loren Ipsum</h3>
+            <ul role="list" class="mt-6 space-y-4">
+              <li class="text-center md:text-left">
+                <a href="#" class="text-sm leading-6 text-gray-300 hover:text-white">Loren Ipsum</a>
+              </li>
+              <li class="text-center md:text-left">
+                <a href="#" class="text-sm leading-6 text-gray-300 hover:text-white">Loren Ipsum</a>
+              </li>
+              <li class="text-center md:text-left">
+                <a href="#" class="text-sm leading-6 text-gray-300 hover:text-white">Loren Ipsum</a>
+              </li>
+              <li class="text-center md:text-left">
+                <a href="#" class="text-sm leading-6 text-gray-300 hover:text-white">Loren Ipsum</a>
+              </li>
+              <li class="text-center md:text-left">
+                <a href="#" class="text-sm leading-6 text-gray-300 hover:text-white">Loren Ipsum</a>
+              </li>
+            </ul>
+          </div>
+            {{#if alternative_locales}}
+          <div class="mt-10 md:mt-0">
+            <h3 class="text-sm text-center font-semibold leading-6 text-white">Loren Ipsum</h3>
+  <div class="relative">
+    <select onchange="window.location.href=this.value" class="mt-4 block appearance-none w-full bg-white border border-gray-300 text-gray-700 py-2 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="language-selector">
+      <option>{{current_locale.name}}</option>
+      {{#each alternative_locales}}
+        <option value="{{url}}">{{name}}</option>
+      {{/each}}
+    </select>
+
+  
+
+<script>
+  document.getElementById('language-selector').addEventListener('change', function() {
+    window.location.href = this.value;
+  });
+</script>
+
+
+          </div>
+{{/if}}
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+

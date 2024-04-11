@@ -1,0 +1,83 @@
+<section class="anchore-bg p-12">
+  <div class="container mx-auto flex flex-wrap items-center px-6">
+    <!-- Left Column -->
+    <div class="w-full lg:w-1/2 text-center lg:text-left px-0">
+    		<h1 class="mb-4 anchore-hero-header">{{category.name}}</h1>
+      	{{#if category.description}}
+      		<h3 class="mb-4 text-center md:text-left text-white">{{category.description}}<h3>
+        {{/if}}
+        <div class="max-w-md mx-auto lg:mx-0">
+          <img src="https://anchore.com/wp-content/themes/anchore/images/search-dark.svg" class="absolute z-50 mt-6 ml-4" alt="Search" width="18" height="18">
+          {{search submit=false placeholder="Search for documentation here"}}
+        </div>
+      </div>
+    </div>
+</section>
+
+<section class="container mx-auto py-4 px-6">
+  {{breadcrumbs}}
+</section>
+
+<section class="pb-5 sm:pb-10 bg-no-repeat bg-origin-padding bg-brand-grey">
+  <div class="container mx-auto text-center category-cards py-4 px-3 sm:py-10">
+    <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-8 px-5">
+      {{#each category.sections}}
+        <a href="{{url}}" class="leading-6 card-link transform transition duration-300 ease-in-out bg-transparent border border-gray-400 px-4 py-4 shadow-sm hover:bg-white hover:scale-105 hover:shadow-lg hover:border-transparent hover:shadow-outline hover:font-semibold hover:text-black next-card-title rounded-lg">
+          <div class="sm:mb-4">
+        {{#is @index 0}}
+          <img src="{{../settings.category_card_icon_1}}" class="mx-auto object-contain max-image-size" />
+        {{/is}}
+        {{#is @index 1}}
+          <img src="{{../settings.category_card_icon_2}}" class="mx-auto object-contain max-image-size" />
+        {{/is}}
+        {{#is @index 2}}
+          <img src="{{../settings.category_card_icon_3}}" class="mx-auto object-contain max-image-size" />
+        {{/is}}
+        {{#is @index 3}}
+          <img src="{{../settings.category_card_icon_4}}" class="mx-auto object-contain max-image-size" />
+        {{/is}}
+        {{#is @index 4}}
+          <img src="{{../settings.category_card_icon_5}}" class="mx-auto object-contain max-image-size" />
+        {{/is}}
+        {{#is @index 5}}
+          <img src="{{../settings.category_card_icon_6}}" class="mx-auto object-contain max-image-size" />
+        {{/is}}
+        {{#is @index 6}}
+          <img src="{{../settings.category_card_icon_7}}" class="mx-auto object-contain max-image-size" />
+        {{/is}}
+        {{#is @index 7}}
+          <img src="{{../settings.category_card_icon_8}}" class="mx-auto object-contain max-image-size" />
+        {{/is}}
+        {{#is @index 8}}
+          <img src="{{../settings.category_card_icon_9}}" class="mx-auto object-contain max-image-size" />
+        {{/is}}
+        {{#is @index 9}}
+          <img src="{{../settings.category_card_icon_10}}" class="mx-auto object-contain max-image-size" />
+        {{/is}}
+        {{#is @index 10}}
+          <img src="{{../settings.category_card_icon_11}}" class="mx-auto object-contain max-image-size" />
+        {{/is}}
+        {{#is @index 11}}
+          <img src="{{../settings.category_card_icon_12}}" class="mx-auto object-contain max-image-size" />
+        {{/is}}
+        {{#is @index 12}}
+          <img src="{{../settings.category_card_icon_13}}" class="mx-auto object-contain max-image-size" />
+        {{/is}}
+        {{#is @index 13}}
+          <img src="{{../settings.category_card_icon_14}}" class="mx-auto object-contain max-image-size" />
+        {{/is}}
+        {{#is @index 14}}
+          <img src="{{../settings.category_card_icon_15}}" class="mx-auto object-contain max-image-size" />
+        {{/is}}
+         {{#is @index 15}}
+          <img src="{{../settings.category_card_icon_16}}" class="mx-auto object-contain max-image-size" />
+        {{/is}}
+        <!-- Add more conditions for other indices if needed -->
+      </div>
+      <span class="text-lg font-semibold text-gray-800 group-hover:text-indigo-600">{{this.name}}</span>
+          <p class="text-base card-text-description line-clamp-2">{{this.description}}</p>
+    </a>
+  {{/each}}
+</div>
+  </div>
+</section>
